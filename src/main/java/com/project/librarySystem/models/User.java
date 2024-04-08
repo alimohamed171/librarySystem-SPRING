@@ -16,25 +16,18 @@ public class User {
     private String phoneNumber;
     private String userType;
 
-     @ManyToMany
-    @JoinTable(
-            name = "BorrowedBook",
-            joinColumns = @JoinColumn(name = "userID"),
-            inverseJoinColumns = @JoinColumn(name = "bookID")
-    )
-    private Set<Book> borrowedBooks;
 
     public User() {
     }
 
-    public User(int userID, String username, String password, String email, String phoneNumber, String userType, Set<Book> borrowedBooks) {
+    public User(int userID, String username, String password, String email, String phoneNumber, String userType) {
         this.userID = userID;
         this.username = username;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.userType = userType;
-        this.borrowedBooks = borrowedBooks;
+
     }
 
     public int getUserID() {
@@ -85,11 +78,4 @@ public class User {
         this.userType = userType;
     }
 
-    public Set<Book> getBorrowedBooks() {
-        return borrowedBooks;
-    }
-
-    public void setBorrowedBooks(Set<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
-    }
 }
