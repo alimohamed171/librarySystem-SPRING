@@ -15,13 +15,11 @@ public class Book {
     private int rackNumber;
     private int availableCopies;
     private int totalCopies;
-    @ManyToMany(mappedBy = "borrowedBooks")
-    private Set<User> users;
 
     public Book() {
     }
 
-    public Book(int bookID, String title, String author, String ISBN, int rackNumber, int availableCopies, int totalCopies, Set<User> users) {
+    public Book(int bookID, String title, String author, String ISBN, int rackNumber, int availableCopies, int totalCopies) {
         this.bookID = bookID;
         this.title = title;
         this.author = author;
@@ -29,7 +27,6 @@ public class Book {
         this.rackNumber = rackNumber;
         this.availableCopies = availableCopies;
         this.totalCopies = totalCopies;
-        this.users = users;
     }
 
     public int getBookID() {
@@ -88,11 +85,4 @@ public class Book {
         this.totalCopies = totalCopies;
     }
 
-    public Set<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Set<User> users) {
-        this.users = users;
-    }
 }
