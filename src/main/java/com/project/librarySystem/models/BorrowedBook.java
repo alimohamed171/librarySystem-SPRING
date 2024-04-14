@@ -1,11 +1,13 @@
 package com.project.librarySystem.models;
 import jakarta.persistence.*;
+import lombok.Data;
 
 
 import java.util.Date;
 
 @Entity
 @Table(name = "borrowed_books")
+@Data
 public class BorrowedBook {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +30,7 @@ public class BorrowedBook {
     private Date returnDate;
 
     @Column(name = "status")
-    private String status; // Status of the borrowing relationship (e.g., "Borrowed", "Returned")
+    private String status; // Status of the borrowing relationship (e.g., "Approve", "reject")
 
     // Getters and setters
 }
