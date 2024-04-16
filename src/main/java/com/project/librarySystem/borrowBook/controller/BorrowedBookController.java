@@ -28,4 +28,11 @@ public class BorrowedBookController {
         }
     }
 
+// update return
+    // copies
+    // status
+
+//get all books ()
+
+
 }

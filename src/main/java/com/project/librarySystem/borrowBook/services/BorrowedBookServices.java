@@ -9,6 +9,7 @@ import com.project.librarySystem.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Service
@@ -41,6 +42,9 @@ public class BorrowedBookServices {
         borrowedBook.setBook(book);
         borrowedBook.setUser(user);
         borrowedBook.setBorrowDate(new Date());
+        LocalDate currentDate = LocalDate.now();
+        LocalDate returnDate = currentDate.plusWeeks(1);
+        borrowedBook.setReturnDate(java.sql.Date.valueOf(returnDate));
         borrowedBook.setStatus("Borrowed");
 
         // Update book availability
