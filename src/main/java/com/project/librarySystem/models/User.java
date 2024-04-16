@@ -18,5 +18,6 @@ public class User {
     private String phoneNumber;
     private String userType;
 
+    // int userLimit (5)
 
 }

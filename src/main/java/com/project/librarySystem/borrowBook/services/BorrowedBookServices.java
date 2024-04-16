@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class BorrowedBookServices {
@@ -31,7 +32,7 @@ public class BorrowedBookServices {
 
 
         if (book.getAvailableCopies() <= 0) {
-            throw new IllegalStateException("Book is not available for borrowing");
+            throw new IllegalStateException("Book is not available for borrowing because no available copies");
         }
 
         User user = userRepository.findById(userId)
@@ -55,5 +56,8 @@ public class BorrowedBookServices {
         borrowedBookRepository.save(borrowedBook);
     }
 
+    public List<BorrowedBook> getBorrowedBooks(){
+        return borrowedBookRepository.findAll();
+    }
 
 }

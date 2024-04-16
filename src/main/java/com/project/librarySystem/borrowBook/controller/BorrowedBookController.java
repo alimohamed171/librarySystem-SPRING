@@ -2,10 +2,14 @@ package com.project.librarySystem.borrowBook.controller;
 
 
 import com.project.librarySystem.borrowBook.services.BorrowedBookServices;
+import com.project.librarySystem.models.BorrowedBook;
+import com.project.librarySystem.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping
@@ -33,6 +37,9 @@ public class BorrowedBookController {
     // status
 
 //get all books ()
-
+@GetMapping("/getBorrowedBooks")
+public List<BorrowedBook> getBorrowedBooks(){
+    return  borrowedBookService.getBorrowedBooks();
+}
 
 }
