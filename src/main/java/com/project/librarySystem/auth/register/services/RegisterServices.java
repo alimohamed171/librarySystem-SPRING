@@ -14,8 +14,7 @@ public class RegisterServices {
 
 
     public void register(User user) {
-        // Encode the user's password before saving
-//        user.setPassword(passwordEncoder.encode(user.getPassword() ));
+
         userRepository.save(user);
     }
 

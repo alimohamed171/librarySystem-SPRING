@@ -14,6 +14,7 @@ public class Book {
     private String title;
     private String author;
     private String ISBN;
+//    private String imageLink;
     private int rackNumber;
     private int availableCopies;
     private int totalCopies;
