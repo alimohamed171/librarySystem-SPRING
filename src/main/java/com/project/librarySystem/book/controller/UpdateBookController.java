@@ -13,8 +13,8 @@ public class UpdateBookController {
     UpdateBookServices updateBookServices;
     @PutMapping("/updateBook/{id}")
     public ResponseEntity<String>updateBook(@PathVariable int id, @RequestBody Book bookDetails){
-        updateBookServices.updateBook(id,bookDetails);
-        return ResponseEntity.ok("book with book id: "+id+" updated successfully !");
+        String message =updateBookServices.updateBook(id,bookDetails);
+        return ResponseEntity.ok(message);
 
     }
 }

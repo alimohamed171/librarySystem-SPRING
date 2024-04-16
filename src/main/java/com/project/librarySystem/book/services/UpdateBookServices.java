@@ -9,8 +9,16 @@ import org.springframework.stereotype.Service;
 public class UpdateBookServices {
     @Autowired
     private BookRepo bookRepo;
-    public Book updateBook(int id, Book bookDetails){
-        return bookRepo.save(bookDetails);
+    public String updateBook(int id, Book bookDetails){
+
+        if(bookIsExist(id)){
+            bookRepo.save(bookDetails);
+            return "book is updated";
+        }
+        return "book is not exist";
+    }
+    private boolean bookIsExist(int id) {
+        return bookRepo.findById(id).isPresent();
     }
 
 }
