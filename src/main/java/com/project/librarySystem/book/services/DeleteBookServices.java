@@ -19,6 +19,9 @@ public class DeleteBookServices {
 
         bookRepo.deleteById(id);
     }
+    public boolean bookIsExist(int id) {
+        return bookRepo.findById(id).isPresent();
+    }
 
 
 }

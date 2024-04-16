@@ -25,7 +25,7 @@ public class UpdateBookServices {
         return Optional.of(("Book with id " + id + " not found"));
     }
 
-    private boolean bookIsExist(int id) {
+    public boolean bookIsExist(int id) {
         return bookRepo.findById(id).isPresent();
     }
 }

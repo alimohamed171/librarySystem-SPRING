@@ -15,9 +15,15 @@ public class DeleteBookController {
 
     @RequestMapping("/deleteBook/{id}")
     public ResponseEntity<String> deleteBookById(@PathVariable int id) {
-        deleteBookServices.deleteById(id);
-        return ResponseEntity.ok("Book with ID " + id + " deleted successfully");// Return a 204 No Content response
+        if (deleteBookServices.bookIsExist(id)) {
+            deleteBookServices.deleteById(id);
+            return ResponseEntity.ok("Book with ID " + id + " deleted successfully");// Return a 204 No Content response
+        }
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("book with provided id does not exist");
+
     }
+
+
 
     // @PostMapping("/deleteBook")
 // public ResponseEntity<Void> deleteBook(@RequestBody Book book) {
