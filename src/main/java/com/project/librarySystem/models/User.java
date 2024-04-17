@@ -16,8 +16,7 @@ public class User {
     private String password;
     private String email;
     private String phoneNumber;
-    private String userType;
-
-    // int userLimit (5)
+    private String userType;//normal
+    private int userLimit ;
 
 }

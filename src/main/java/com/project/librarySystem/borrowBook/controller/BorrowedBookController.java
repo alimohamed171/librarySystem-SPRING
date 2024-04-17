@@ -42,15 +42,16 @@ public class BorrowedBookController {
 
         return  borrowedBookService.getBorrowedBooks();
     }
-//@PutMapping("/returnBorrowedBook/{userId}/{bookId}")
-//    public ResponseEntity<?>returnBorrowedBook(@PathVariable int userId,@PathVariable int booId){
-//        try {
-//            borrowedBookService.returnBorrowedBook(userId, booId);
-//            return ResponseEntity.ok("Book returned successfully.");
-//        } catch (Exception e) {
-//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to return book: " + e.getMessage());
-//        }
-//    }
+
+    @PutMapping("/returnBorrowedBook/{userId}/{bookId}")
+    public ResponseEntity<?>returnBorrowedBook(@PathVariable int userId,@PathVariable int bookId){
+        try {
+            borrowedBookService.returnBorrowedBook(userId, bookId);
+            return ResponseEntity.ok("Book returned successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to return book: " + e.getMessage());
+        }
+    }
 
 
 

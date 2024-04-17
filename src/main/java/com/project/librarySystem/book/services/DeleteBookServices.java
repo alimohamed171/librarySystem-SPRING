@@ -20,7 +20,6 @@ public class DeleteBookServices {
     public void delete(Book book) {
         bookRepo.delete(book);
     }
-
     public void deleteById(int id) {
 
         bookRepo.deleteById(id);
