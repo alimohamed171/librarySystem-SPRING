@@ -2,6 +2,7 @@ package com.project.librarySystem.borrowBook.controller;
 
 
 import com.project.librarySystem.borrowBook.services.BorrowedBookServices;
+import com.project.librarySystem.models.Book;
 import com.project.librarySystem.models.BorrowedBook;
 import com.project.librarySystem.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping
@@ -32,14 +34,26 @@ public class BorrowedBookController {
         }
     }
 
-// update return
-    // copies
-    // status
 
-//get all books ()
-@GetMapping("/getBorrowedBooks")
-public List<BorrowedBook> getBorrowedBooks(){
-    return  borrowedBookService.getBorrowedBooks();
+
+    //get all books ()
+    @GetMapping("/getBorrowedBooks")
+    public List<BorrowedBook> getBorrowedBooks(){
+
+        return  borrowedBookService.getBorrowedBooks();
+    }
+//@PutMapping("/returnBorrowedBook/{userId}/{bookId}")
+//    public ResponseEntity<?>returnBorrowedBook(@PathVariable int userId,@PathVariable int booId){
+//        try {
+//            borrowedBookService.returnBorrowedBook(userId, booId);
+//            return ResponseEntity.ok("Book returned successfully.");
+//        } catch (Exception e) {
+//            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to return book: " + e.getMessage());
+//        }
+//    }
+
+
+
 }
 
-}
+

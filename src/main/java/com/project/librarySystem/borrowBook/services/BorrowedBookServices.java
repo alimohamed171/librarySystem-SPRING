@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BorrowedBookServices {
@@ -24,6 +25,7 @@ public class BorrowedBookServices {
 
     @Autowired
     private UserRepo userRepository;
+    private BorrowedBook borrowedBook;
 
     public void borrowBook(int userId, int bookId) {
 
@@ -56,8 +58,31 @@ public class BorrowedBookServices {
         borrowedBookRepository.save(borrowedBook);
     }
 
-    public List<BorrowedBook> getBorrowedBooks(){
+    public List<BorrowedBook> getBorrowedBooks() {
         return borrowedBookRepository.findAll();
     }
 
+//    public void returnBorrowedBook(int userId, int bookId) {
+//
+//        Book book = bookRepository.findById(bookId)
+//                .orElseThrow(() -> new IllegalArgumentException("Book not found"));
+//
+//        User user = userRepository.findById(userId)
+//                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+//
+//        // Create a new BorrowedBook entity
+//        Optional<BorrowedBook> borrowedBook = borrowedBookRepository.findByUserIdAndBookId(userId,bookId);
+//        if(borrowedBook.isPresent()){
+//            borrowedBook.get().setStatus("returned");
+//            borrowedBook.get().setReturnDate(new Date());
+//        }
+//
+//        // Update book availability
+//        book.setAvailableCopies(book.getAvailableCopies() + 1);
+//        bookRepository.save(book);
+//
+//    }
+
+
 }
+
