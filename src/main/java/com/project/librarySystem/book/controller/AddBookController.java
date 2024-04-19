@@ -24,11 +24,11 @@ public class AddBookController {
     public ResponseEntity<?> addBook(
             @RequestBody Book book
     ) {
-        if(book.getTitle().isEmpty()){
+        if(book.getTitle().trim().isEmpty()){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("book title is empty.");
-        }if(book.getAuthor().isEmpty()){
+        }if(book.getAuthor().trim().isEmpty()){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("book author is empty.");
-        }if(book.getISBN().isEmpty()){
+        }if(book.getISBN().trim().isEmpty()){
             return ResponseEntity.status(HttpStatus.CONFLICT).body("book ISBN is empty.");
         }
         if (!addBookServices.isTitleAvailable(book.getTitle())) {
