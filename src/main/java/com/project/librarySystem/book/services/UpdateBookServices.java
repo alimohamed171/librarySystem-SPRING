@@ -20,6 +20,7 @@ public class UpdateBookServices {
             existingBook.get().setRackNumber(bookDetails.getRackNumber());
             existingBook.get().setAvailableCopies(bookDetails.getAvailableCopies());
             existingBook.get().setTotalCopies(bookDetails.getTotalCopies());
+            existingBook.get().setImageLink(bookDetails.getImageLink());
             return Optional.of(bookRepo.save(existingBook.get()));
         }
         return Optional.of(("Book with id " + id + " not found"));
