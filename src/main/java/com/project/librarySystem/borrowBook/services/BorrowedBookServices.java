@@ -27,8 +27,7 @@ public class BorrowedBookServices {
     private UserRepo userRepository;
     private BorrowedBook borrowedBook;
 
-    private int borrowBookIdOfBook;
-    private int borrowBookIdOfUser;
+    private int borrowBookId;
 
     // borrowBook
     public void borrowBook(int userId, int bookId) {
@@ -80,13 +79,12 @@ public class BorrowedBookServices {
 
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new IllegalArgumentException("Book not found"));
-
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("User not found"));
 
-        if(checkBorrowedBooksByBookId(bookId) && checkBorrowedBooksByUserId(userId)){
-            if(borrowBookIdOfBook == borrowBookIdOfUser){
-                Optional<BorrowedBook> borrowedBook = borrowedBookRepository.findById(borrowBookIdOfUser);
+        if(checkBorrowedBooksByBookId(bookId,userId) ){
+
+                Optional<BorrowedBook> borrowedBook = borrowedBookRepository.findById(borrowBookId);
 
                 if(borrowedBook.isPresent()){
                     borrowedBook.get().setStatus("returned");
@@ -98,46 +96,28 @@ public class BorrowedBookServices {
 
                     user.setUserLimit(user.getUserLimit() - 1);
                     userRepository.save(user);
-
                 }
             }
             else {
                 throw new IllegalArgumentException("this user didn't borrow this book ");
             }
-
         }
 
-
-
-    }
-    public Boolean checkBorrowedBooksByBookId(int bookId) {
+    public Boolean checkBorrowedBooksByBookId(int bookId,int userId) {
 
         List<BorrowedBook> borrowedBookList = borrowedBookRepository.findAll();
         boolean hasBorrowedBooks = false;
         for (BorrowedBook borrowedBook : borrowedBookList) {
-            if (borrowedBook.getBook().getBookID()== bookId) {
+            if (borrowedBook.getBook().getBookID()== bookId && borrowedBook.getUser().getUserID()==userId) {
                 hasBorrowedBooks = true;
                 // id
-                borrowBookIdOfBook = borrowedBook.getId();
+                borrowBookId = borrowedBook.getId();
                 return hasBorrowedBooks ;
             }
         }
         return hasBorrowedBooks;
     }
-    public Boolean checkBorrowedBooksByUserId(int userId) {
 
-        List<BorrowedBook> borrowedBookList = borrowedBookRepository.findAll();
-        boolean hasBorrowedBooks = false;
-        for (BorrowedBook borrowedBook : borrowedBookList) {
-            if (borrowedBook.getUser().getUserID() == userId) {
-                hasBorrowedBooks = true;
-                //id
-                borrowBookIdOfUser = borrowedBook.getId();
-                return hasBorrowedBooks ;
-            }
-        }
-        return hasBorrowedBooks;
-    }
-//
+
 }
 
