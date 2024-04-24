@@ -108,7 +108,7 @@ public class BorrowedBookServices {
         List<BorrowedBook> borrowedBookList = borrowedBookRepository.findAll();
         boolean hasBorrowedBooks = false;
         for (BorrowedBook borrowedBook : borrowedBookList) {
-            if (borrowedBook.getBook().getBookID()== bookId && borrowedBook.getUser().getUserID()==userId) {
+            if (borrowedBook.getBook().getBookID()== bookId && borrowedBook.getUser().getUserID()==userId&& borrowedBook.getStatus()!="returned") {
                 hasBorrowedBooks = true;
                 // id
                 borrowBookId = borrowedBook.getId();
