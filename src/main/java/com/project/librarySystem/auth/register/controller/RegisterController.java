@@ -24,10 +24,10 @@ public class RegisterController {
     ) {
         if (!registerServices.isUsernameAvailable(user.getUsername())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Username already exists.");
-        }if (!registerServices.isEmailAvailable(user.getEmail())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists.");
         }if (!ValidationUtils.isValidEmail(user.getEmail())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Email is not valid.");
+        }if (!registerServices.isEmailAvailable(user.getEmail())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Email already exists.");
         }if (!ValidationUtils.isValidPhoneNumber(user.getPhoneNumber())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Phone number is not valid");
         }
