@@ -1,0 +1,24 @@
+version: "3"
+services:
+  springboot-app:
+    container_name: lms-spring-app
+    image: springbooot-app
+    restart: always
+    build: .
+    ports:
+      - 8089:8080
+    environment:
+      MYSQL_HOST: lms-mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+  mysqldb:
+    container_name: lms-mysqldb
+    image: mysql:8.0.36
+    volumes:
+      - C:\Users\BaSant\OneDrive - Faculty of Computers and Information\Desktop\New folder:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: root
