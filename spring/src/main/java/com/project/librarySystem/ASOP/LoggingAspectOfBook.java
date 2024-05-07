@@ -20,13 +20,20 @@ public class LoggingAspectOfBook {
     @Before("loggingPointCutBook()")
     public void beforeLoginMethods(JoinPoint joinPoint) {
         //Logger logger;
-        log.info("Before executing book-api..."+joinPoint.getSignature().getName() );
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = now.format(formatter);
+        log.info("Before executing book-api..."+joinPoint.getSignature().getName()+"\n"+formattedDateTime );
+
     }
 
     @After("loggingPointCutBook()")
     public void afterLoginMethods(JoinPoint joinPoint)
     {
-        log.info("After executing book-api..."+joinPoint.getSignature().getName() );
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        String formattedDateTime = now.format(formatter);
+        log.info("After executing book-api..."+joinPoint.getSignature().getName()+"\n"+formattedDateTime );
     }
 
 }
